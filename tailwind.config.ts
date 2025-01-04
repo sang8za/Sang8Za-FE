@@ -9,8 +9,21 @@ export default {
   theme: {
     extend: {
       colors: {
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        accent: "var(--accent)",
         background: "var(--background)",
-        foreground: "var(--foreground)",
+        text: "var(--text)",
+        hover_primary: "var(--hover-primary)",
+        hover_secondary: "var(--hover-secondary)",
+      },
+      maxWidth: {
+        "custom-sm": "620px",
+        "custom-md": "900px",
+        "custom-lg": "1200px",
+      },
+      boxShadow: {
+        full: "0 0px 20px 0px rgba(0, 0, 0, 0.3)",
       },
     },
   },

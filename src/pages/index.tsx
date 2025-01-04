@@ -1,7 +1,8 @@
 // import Image from "next/image";
 // import { Geist, Geist_Mono } from "next/font/google";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+
+import MatchingItem from "@/components/MatchingItem";
+import { useAuth } from "@/hooks/useAuth";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -14,13 +15,6 @@ import Footer from "@/components/Footer";
 // });
 
 export default function Home() {
-  return (
-    <>
-      <Header />
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <p>test</p>
-      </main>
-      <Footer />
-    </>
-  );
+  const { user, logout } = useAuth();
+  return <div>{user ? <MatchingItem /> : <div>login 하세요</div>}</div>;
 }

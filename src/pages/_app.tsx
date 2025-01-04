@@ -1,6 +1,14 @@
+import MainLayout from "@/components/layout/MainLayout";
+import { AuthProvider } from "@/context/AuthContext";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <AuthProvider>
+      <MainLayout>
+        <Component {...pageProps} />
+      </MainLayout>
+    </AuthProvider>
+  );
 }
