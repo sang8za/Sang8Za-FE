@@ -22,7 +22,7 @@ export default function Home() {
       {user ? (
         <MatchingItem />
       ) : (
-        <div className="max-w-custom-sm mx-auto flex justify-center gap-10">
+        <div className="max-w-custom-md mx-auto flex justify-center gap-10">
           <div onClick={() => handleLogin("user")}>
             <div className="bg-gray-200 w-48 min-h-64" />
             <h2 className="h2 text-center">Tenant</h2>

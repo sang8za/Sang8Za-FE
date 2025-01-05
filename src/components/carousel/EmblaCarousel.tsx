@@ -2,10 +2,10 @@ import React, { useState, useEffect, useCallback } from "react";
 import { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import { Thumb } from "./EmblaCarouselThumbsButton";
-import styles from "@/styles/EmblaCarousel.module.css";
+import Image from "next/image";
 
 type PropType = {
-  slides: number[];
+  slides: string[];
   options?: EmblaOptionsType;
 };
 
@@ -39,26 +39,28 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
   }, [emblaMainApi, onSelect]);
 
   return (
-    <div className={styles.embla}>
-      <div className={styles.embla__viewport} ref={emblaMainRef}>
-        <div className={styles.embla__container}>
-          {slides.map((index) => (
-            <div className={styles.embla__slide} key={index}>
-              <div className={styles.embla__slide__number}>{index + 1}</div>
+    <div className="embla">
+      <div className="embla__viewport" ref={emblaMainRef}>
+        <div className="embla__container">
+          {slides.map((slide, index) => (
+            <div className="embla__slide" key={index}>
+              <div className="embla__slide__number relative w-full aspect-square">
+                <Image src={slide} alt="" fill className="object-cover" />
+              </div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className={styles.embla_thumbs}>
-        <div className={styles.embla_thumbs__viewport} ref={emblaThumbsRef}>
-          <div className={styles.embla_thumbs__container}>
-            {slides.map((index) => (
+      <div className="embla_thumbs">
+        <div className="embla_thumbs__viewport" ref={emblaThumbsRef}>
+          <div className="embla_thumbs__container">
+            {slides.map((slide, index) => (
               <Thumb
                 key={index}
                 onClick={() => onThumbClick(index)}
                 selected={index === selectedIndex}
-                index={index}
+                path={slide}
               />
             ))}
           </div>

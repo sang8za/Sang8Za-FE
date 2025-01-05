@@ -1,6 +1,8 @@
 import { useState } from "react";
-import MatchingImage from "./MatchingImage";
 import { Separator } from "./ui/separator";
+import EmblaCarousel from "./carousel/EmblaCarousel";
+import Image from "next/image";
+import { ReviewItem, reviewMock } from "./ReviewItem";
 
 export default function MatchingItem() {
   const mockupData = [
@@ -11,7 +13,7 @@ export default function MatchingItem() {
       price: 1500,
     },
     {
-      photo_url: ["globe.svg", "vercel.svg"],
+      photo_url: ["globe.svg", "logo.svg"],
       title: "2br - Private room with bathroom",
       city: "Downtown",
       price: 1000,
@@ -25,40 +27,33 @@ export default function MatchingItem() {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const nextItem = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % mockupData.length);
-    setCurrentImageIndex(0);
+    alert("like");
   };
 
   const prevItem = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? mockupData.length - 1 : prevIndex - 1
     );
-    setCurrentImageIndex(0);
+    alert("dislike");
   };
 
   const count = 3; // 반복 개수 (수동 설정)
   const items = Array.from({ length: count }, (_, index) => index);
 
   return (
-    <div className="max-w-custom-md flex justify-between mx-auto">
+    <div className="flex justify-center">
       <div>
-        <button onClick={prevItem}>Dislike</button>
+        <button onClick={prevItem}>
+          <Image src="leftArrow.svg" width={30} height={30} alt="" />
+        </button>
       </div>
-      <div className="max-w-custom-sm mx-auto flex flex-col items-center">
-        <div className="">
-          <MatchingImage
-            path={mockupData[currentIndex].photo_url[currentImageIndex]}
-            title={mockupData[currentIndex].title}
-          />
-          <div className="flex py-3 gap-3">
-            <div className="w-12 h-12 bg-primary"></div>
-            <div className="w-12 h-12 bg-primary"></div>
-            <div className="w-12 h-12 bg-primary"></div>
-            <div className="w-12 h-12 bg-primary"></div>
-            <div className="w-12 h-12 bg-primary"></div>
+      <div className="max-w-custom-sm mx-auto">
+        <div className="flex flex-col items-center">
+          <div>
+            <EmblaCarousel slides={mockupData[currentIndex].photo_url} />
           </div>
           <div className="my-5">
             <section className="flex flex-col section">
@@ -78,22 +73,22 @@ export default function MatchingItem() {
               </ul>
             </section>
             <Separator />
-            <section>
+            <section className="flex flex-col">
               <h1 className="h1">Reviews</h1>
               <div>
-                {items.map((item) => (
-                  <div key={item} className="">
-                    <p>Elias Hong</p>
-                    <p>완벽한 집주인!</p>
-                    <span>
-                      매우 친절하고 응답이 빨라요. 유지보수도 신속하게 처리해
-                      주셨습니다.
-                    </span>
-                    {items.length - 1 === item ? "" : <Separator />}
+                {reviewMock.map((item, index) => (
+                  <div key={item.id}>
+                    <ReviewItem
+                      writer={item.writer}
+                      title={item.title}
+                      body={item.body}
+                      point={item.point}
+                    />
+                    {index !== reviewMock.length - 1 && <Separator />}
                   </div>
                 ))}
               </div>
-              <p className="text-center mt-10 py-2">view more {">"}</p>
+              <button className="text-sm mt-10 py-2">view more {">"}</button>
             </section>
             {/** end review */}
             <Separator />
@@ -105,19 +100,24 @@ export default function MatchingItem() {
             <Separator />
             <section>
               <h1 className="h1">Host</h1>
-              <div className="rounded-md shadow-full m-6 p-6 flex justify-between">
-                <div>photo</div>
-                <div className="flex flex-col">
-                  <p>8.5</p>
-                  <span>Avg Rates</span>
-                  <p>300</p>
-                  <span>Review</span>
-                  <p>??</p>
-                  <span>??</span>
+              <div className="rounded-md shadow-full m-6 p-6 flex">
+                <div className="flex-1 flex flex-col items-center justify-center text-center">
+                  <div className="w-36 h-36 bg-orange-300 rounded-full" />
+                  <h3 className="h2">HostName</h3>
+                </div>
+                <div className="flex-1 flex flex-col">
+                  <p className="text-2xl">8.5</p>
+                  <span className="">Avg Rates</span>
+                  <Separator />
+                  <p className="text-2xl">8.5</p>
+                  <span className="">Avg Rates</span>
+                  <Separator />
+                  <p className="text-2xl">8.5</p>
+                  <span className="">Avg Rates</span>
                 </div>
               </div>
               {/** host box */}
-              <p>
+              <p className="text-xl">
                 {`Hi, I'm Emily! I've been an Airbnb host for over 3 years. I love
                 meeting new people and ensuring they have a comfortable stay.`}
               </p>
@@ -128,7 +128,9 @@ export default function MatchingItem() {
         </div>
       </div>
       <div>
-        <button onClick={nextItem}>Like</button>
+        <button onClick={nextItem}>
+          <Image src="rightArrow.svg" width={30} height={30} alt="" />
+        </button>
       </div>
     </div>
   );

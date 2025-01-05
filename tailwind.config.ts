@@ -24,9 +24,8 @@ export default {
         lg: "18px",
       },
       maxWidth: {
-        "custom-sm": "620px",
-        "custom-md": "900px",
-        "custom-lg": "1200px",
+        "custom-sm": "507px",
+        "custom-md": "780px",
       },
       boxShadow: {
         full: "0 0px 20px 0px rgba(0, 0, 0, 0.3)",

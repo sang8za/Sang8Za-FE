@@ -1,7 +1,6 @@
 import { useAuth } from "@/hooks/useAuth";
 import Image from "next/image";
 import Link from "next/link";
-import AvatarMenu from "../ui/AvatarMenu";
 import { useState } from "react";
 import { Separator } from "../ui/separator";
 
@@ -40,7 +39,10 @@ export default function Header() {
       <nav className="flex gap-5 flex-1 justify-end">
         {user && (
           <div className="flex gap-4 header_menu_container">
-            <div className="flex gap-1" onClick={() => setIsMyReviewOpen(true)}>
+            <div
+              className="flex gap-1 cursor-pointer"
+              onClick={() => setIsMyReviewOpen(true)}
+            >
               <Image
                 className="w-7 h-7"
                 src="/orange_heart.svg"
