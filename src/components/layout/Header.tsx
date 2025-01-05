@@ -14,11 +14,7 @@ export default function Header() {
       {/** logo */}
       <div className="text-2xl font-bold">
         <Link href="/">
-<<<<<<< HEAD
-          <Image src="/logo.svg" alt="logo" width={70} height={28} />
-=======
           <Image src="/logo.svg" alt="logo" width={93} height={70} />
->>>>>>> aef8b83f0670fae0b1b9a074d4f5cf1cebfa0765
         </Link>
       </div>
 
