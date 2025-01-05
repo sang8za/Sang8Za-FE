@@ -45,12 +45,12 @@ export default function MatchingItem() {
 
   return (
     <div className="flex justify-center">
-      <div>
+      <div className="mr-[85px] mt-[40vh]">
         <button onClick={prevItem}>
           <Image src="leftArrow.svg" width={30} height={30} alt="" />
         </button>
       </div>
-      <div className="max-w-custom-sm mx-auto">
+      <div className="max-w-custom-sm">
         <div className="flex flex-col items-center">
           <div>
             <EmblaCarousel slides={mockupData[currentIndex].photo_url} />
@@ -127,7 +127,7 @@ export default function MatchingItem() {
           </div>
         </div>
       </div>
-      <div>
+      <div className="ml-[85px] mt-[40vh]">
         <button onClick={nextItem}>
           <Image src="rightArrow.svg" width={30} height={30} alt="" />
         </button>

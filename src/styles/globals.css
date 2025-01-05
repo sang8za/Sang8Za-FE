@@ -45,6 +45,11 @@ body {
   @apply px-4 py-2 inline-flex rounded-full border cursor-pointer;
 }
 
+.header_menu_container {
+  @apply px-4 py-2 inline-flex rounded-full border  cursor-pointer;
+  border-color: black;
+}
+
 .embla {
   @apply max-w-3xl mx-auto text-[1.6rem] leading-[1.65];
   --slide-height: 19rem;
