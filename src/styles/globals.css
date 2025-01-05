@@ -51,7 +51,7 @@ body {
 }
 
 .embla {
-  @apply max-w-3xl mx-auto text-[1.6rem] leading-[1.65];
+  @apply text-[1.6rem] leading-[1.65];
   --slide-height: 19rem;
   --slide-spacing: 1rem;
   --slide-size: 100%;
