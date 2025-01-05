@@ -100,7 +100,7 @@ export default function ProfilePage() {
               value={isGender}
               placeholder="Male/Female"
               onChange={(e) => setIsGender(e.target.value)}
-              className="block"
+              className="block bg-white disabled:bg-white border border-none disabled:border-none border-none focus:border-none focus:ring-0 outline-none focus:outline-none"
               disabled={isFormDisabled}
             />
             <input
@@ -108,7 +108,7 @@ export default function ProfilePage() {
               value={isBirthday}
               placeholder="DD/MM/YY"
               onChange={(e) => setIsBirthday(e.target.value)}
-              className="block"
+              className="block bg-white disabled:bg-white border border-none disabled:border-none border-none focus:border-none focus:ring-0 outline-none focus:outline-none"
               disabled={isFormDisabled}
             />
             <input
@@ -116,7 +116,7 @@ export default function ProfilePage() {
               value={isEmail}
               placeholder="example@domain.com"
               onChange={(e) => setIsEmail(e.target.value)}
-              className="block"
+              className="block bg-white disabled:bg-white border border-none disabled:border-none border-none focus:border-none focus:ring-0 outline-none focus:outline-none"
               disabled={isFormDisabled}
             />
             <input
@@ -124,7 +124,7 @@ export default function ProfilePage() {
               value={isWishLocation}
               placeholder="Address"
               onChange={(e) => setIsWishLocation(e.target.value)}
-              className="block"
+              className="block bg-white disabled:bg-white border border-none disabled:border-none border-none focus:border-none focus:ring-0 outline-none focus:outline-none"
               disabled={isFormDisabled}
             />
             <input
@@ -132,7 +132,7 @@ export default function ProfilePage() {
               value={isPostalCode}
               placeholder="Postal Code"
               onChange={(e) => setIsPostalCode(e.target.value)}
-              className="block"
+              className="block bg-white disabled:bg-white border border-none disabled:border-none border-none focus:border-none focus:ring-0 outline-none focus:outline-none"
               disabled={isFormDisabled}
             />
             <input
@@ -140,7 +140,7 @@ export default function ProfilePage() {
               value={isWishStartDate}
               placeholder="DD/MM/YY"
               onChange={(e) => setIsWishStartDate(e.target.value)}
-              className="block"
+              className="block bg-white disabled:bg-white border border-none disabled:border-none border-none focus:border-none focus:ring-0 outline-none focus:outline-none"
               disabled={isFormDisabled}
             />
             <input
@@ -148,14 +148,14 @@ export default function ProfilePage() {
               value={isWishEndDate}
               placeholder="DD/MM/YY"
               onChange={(e) => setIsWishEndDate(e.target.value)}
-              className="block"
+              className="block bg-white disabled:bg-white border border-none disabled:border-none border-none focus:border-none focus:ring-0 outline-none focus:outline-none"
               disabled={isFormDisabled}
             />{" "}
             <textarea
               value={isBio}
               placeholder="Your bio..."
               onChange={(e) => setIsBio(e.target.value)}
-              className="block"
+              className="block bg-white disabled:bg-white border border-none disabled:border-none border-none focus:border-none focus:ring-0 outline-none focus:outline-none"
               disabled={isFormDisabled}
             />
           </div>
