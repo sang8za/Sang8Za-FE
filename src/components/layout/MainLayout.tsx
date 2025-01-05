@@ -8,7 +8,7 @@ interface LayoutProps {
 
 export default function MainLayout({ children }: LayoutProps) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-screen">
       {/* 고정된 헤더 */}
       <Header />
 

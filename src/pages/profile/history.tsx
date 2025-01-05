@@ -1,4 +1,4 @@
-import LandloadMatchingContent from "@/components/LandloadMatchingContent";
+import LandlordMatchingContent from "@/components/LandloadMatchingContent";
 import UserLayout from "@/components/layout/UserLayout";
 import HistoryThumbsItem from "@/components/HistoryThumbs";
 import UserMatchingContent from "@/components/UserMatchingContent";
@@ -105,7 +105,7 @@ export default function ProfileContracts() {
 
   return (
     <UserLayout>
-      <h1 className="text-2xl font-bold">History</h1>
+      <h1 className="text-2xl font-bold">Match</h1>
       <div className="w-full py-3">
         <div className="w-full relative">
           {/* 왼쪽 이동 버튼 */}
@@ -187,7 +187,7 @@ export default function ProfileContracts() {
               }
             />
           ) : (
-            <LandloadMatchingContent
+            <LandlordMatchingContent
               currentIndex={index}
               mockupData={tenantData}
             />
