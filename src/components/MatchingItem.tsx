@@ -1,12 +1,8 @@
 import { useState } from "react";
 import MatchingImage from "./MatchingImage";
-import EmblaCarousel from "./carousel/EmblaCarousel";
-import { EmblaOptionsType } from "embla-carousel";
-import { useAuth } from "@/hooks/useAuth";
+import { Separator } from "./ui/separator";
 
 export default function MatchingItem() {
-  const { user, logout } = useAuth();
-
   const mockupData = [
     {
       photo_url: ["next.svg", "file.svg"],
@@ -28,8 +24,6 @@ export default function MatchingItem() {
     },
   ];
 
-  const [mock, setMock] = useState(null);
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -49,7 +43,7 @@ export default function MatchingItem() {
   const items = Array.from({ length: count }, (_, index) => index);
 
   return (
-    <div className="max-w-custom-md flex items-center justify-between mx-auto">
+    <div className="max-w-custom-md flex justify-between mx-auto">
       <div>
         <button onClick={prevItem}>Dislike</button>
       </div>
@@ -66,52 +60,26 @@ export default function MatchingItem() {
             <div className="w-12 h-12 bg-primary"></div>
             <div className="w-12 h-12 bg-primary"></div>
           </div>
-          <div className="">
-            <section className="flex flex-col">
-              <h1 className="text-2xl font-bold">
-                {mockupData[currentIndex].title}
-              </h1>
+          <div className="my-5">
+            <section className="flex flex-col section">
+              <div className="flex justify-between py-5">
+                <h1 className="h1">{mockupData[currentIndex].title}</h1>
+                <h3 className="text-xl">${mockupData[currentIndex].price}</h3>
+              </div>
               <span className="text-xl">{mockupData[currentIndex].city}</span>
-              <span>${mockupData[currentIndex].price}</span>
             </section>
-            <section className="border-b py-6 mb-6">
-              <ul className="flex flex-wrap gap-3">
+            <section className="section">
+              <ul className="filter_container">
                 {items.map((item) => (
-                  <li
-                    key={item}
-                    className="px-4 py-2 inline-flex rounded-full border "
-                  >
+                  <li key={item} className="filter__item">
                     No Smoking
                   </li>
                 ))}
-                <li className="px-4 py-2 inline-flex rounded-full border ">
-                  No Pets
-                </li>
-                <li className="px-4 py-2 inline-flex rounded-full border ">
-                  Party
-                </li>
-                <li className="px-4 py-2 inline-flex rounded-full border ">
-                  No Pets
-                </li>
-                <li className="px-4 py-2 inline-flex rounded-full border ">
-                  No Smoking
-                </li>
-                <li className="px-4 py-2 inline-flex rounded-full border ">
-                  Party
-                </li>
-                <li className="px-4 py-2 inline-flex rounded-full border ">
-                  Party
-                </li>
-                <li className="px-4 py-2 inline-flex rounded-full border ">
-                  Party
-                </li>
-                <li className="px-4 py-2 inline-flex rounded-full border ">
-                  Party
-                </li>
               </ul>
             </section>
-            <section className="border-b py-6 mb-6">
-              <h1 className="text-2xl font-bold">Reviews</h1>
+            <Separator />
+            <section>
+              <h1 className="h1">Reviews</h1>
               <div>
                 {items.map((item) => (
                   <div key={item} className="">
@@ -121,19 +89,22 @@ export default function MatchingItem() {
                       매우 친절하고 응답이 빨라요. 유지보수도 신속하게 처리해
                       주셨습니다.
                     </span>
+                    {items.length - 1 === item ? "" : <Separator />}
                   </div>
                 ))}
               </div>
-              <p>view more {">"}</p>
+              <p className="text-center mt-10 py-2">view more {">"}</p>
             </section>
             {/** end review */}
-            <section className="border-b py-6 mb-6">
-              <h1 className="text-2xl font-bold">Location</h1>
+            <Separator />
+            <section>
+              <h1 className="h1">Location</h1>
               <div className="w-[600px] h-[600px] bg-gray-200"></div>
             </section>
             {/** end Location */}
+            <Separator />
             <section>
-              <h1 className="text-2xl font-bold">Host</h1>
+              <h1 className="h1">Host</h1>
               <div className="rounded-md shadow-full m-6 p-6 flex justify-between">
                 <div>photo</div>
                 <div className="flex flex-col">
