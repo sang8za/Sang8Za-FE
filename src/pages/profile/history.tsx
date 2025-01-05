@@ -1,4 +1,4 @@
-import LandlordMatchingContent from "@/components/LandloadMatchingContent";
+import LandlordMatchingContent from "@/components/LandlordMatchingContent";
 import UserLayout from "@/components/layout/UserLayout";
 import HistoryThumbsItem from "@/components/HistoryThumbs";
 import UserMatchingContent from "@/components/UserMatchingContent";

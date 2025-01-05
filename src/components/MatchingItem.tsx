@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import { useAuth } from "@/hooks/useAuth";
 import UserMatchingContent from "./UserMatchingContent";
-import LandloadMatchingContent from "./LandloadMatchingContent";
+import LandlordMatchingContent from "./LandlordMatchingContent";
 import {
   PropertyDetail,
   propertyMockup,
@@ -65,15 +65,19 @@ export default function MatchingItem() {
 
       {/* 역할별로 다른 컴포넌트 렌더링 */}
       {user?.type === "tenant" ? (
-        <UserMatchingContent
-          currentIndex={currentIndex}
-          mockupData={propertyData}
-        />
+        <>
+          <UserMatchingContent
+            currentIndex={currentIndex}
+            mockupData={propertyData}
+          />
+        </>
       ) : (
-        <LandloadMatchingContent
-          currentIndex={currentIndex}
-          mockupData={tenantData}
-        />
+        <>
+          <LandlordMatchingContent
+            currentIndex={currentIndex}
+            mockupData={tenantData}
+          />
+        </>
       )}
 
       {/* 오른쪽 화살표 버튼 */}

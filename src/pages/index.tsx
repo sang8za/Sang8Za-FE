@@ -17,8 +17,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://localhost:3021/user");
-
+        const res = await fetch("http://localhost:3021/user?isLimited=true");
         if (!res.ok) {
           throw new Error("Failed to fetch user data");
         }
@@ -31,9 +30,11 @@ export default function Home() {
 
         if (tenant) {
           setIsTenantValue(tenant);
+          // login(tenant);
         }
         if (landlord) {
           setIsLandlordValue(landlord);
+          // login(landlord);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -44,8 +45,26 @@ export default function Home() {
   }, []);
 
   const handleLogin = async (type: UserType) => {
-    const selectedUser = isTenantValue ? isTenantValue : isLandlordValue; // 선택된 역할의 유저 정보 가져오기
+    let selectedUser = isTenantValue ? isTenantValue : isLandlordValue; // 선택된 역할의 유저 정보 가져오기
+    if (user == null && type === "landlord") {
+      selectedUser = {
+        id: 0,
+        name: "Landlord",
+        type: "landlord",
+        image_url:
+          "https://media.gettyimages.com/id/609883286/es/foto/west-hollywood-ca-kimberly-robinson-attends-chanel-dinner-celebrating-n-5-leau-at-the-sunset.jpg?s=612x612&w=gi&k=20&c=X_gmo08nPX7hcyvmV0bNWEK0BLykcOxLvd6jdZp9t7I=",
+      };
+    } else {
+      selectedUser = {
+        id: 0,
+        name: "Tenant",
+        type: "tenant",
+        image_url:
+          "https://live.staticflickr.com/3181/2579354912_ff453014f4.jpg",
+      };
+    }
 
+    console.log(selectedUser);
     if (!selectedUser) {
       console.error("User not found for the selected role.");
       return;
@@ -64,7 +83,10 @@ export default function Home() {
           <div onClick={() => handleLogin("tenant")}>
             <div className="bg-gray-200 w-48 h-[211px] overflow-hidden">
               <Image
-                src={isTenantValue?.image_url ?? ""}
+                src={
+                  isTenantValue?.image_url ??
+                  "https://live.staticflickr.com/3181/2579354912_ff453014f4.jpg"
+                }
                 className="object-cover w-full h-full"
                 width={192}
                 height={211}
@@ -76,7 +98,10 @@ export default function Home() {
           <div onClick={() => handleLogin("landlord")}>
             <div className="bg-gray-200 w-48 h-[211px] overflow-hidden">
               <Image
-                src={isLandlordValue?.image_url ?? ""}
+                src={
+                  isLandlordValue?.image_url ??
+                  "https://media.gettyimages.com/id/609883286/es/foto/west-hollywood-ca-kimberly-robinson-attends-chanel-dinner-celebrating-n-5-leau-at-the-sunset.jpg?s=612x612&w=gi&k=20&c=X_gmo08nPX7hcyvmV0bNWEK0BLykcOxLvd6jdZp9t7I="
+                }
                 className="object-cover w-full h-full"
                 width={192}
                 height={211}
