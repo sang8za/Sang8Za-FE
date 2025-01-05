@@ -1,7 +1,7 @@
-export type UserRole = "user" | "landlord";
+export type UserType = "tenant" | "landlord";
 export interface UserProfile {
   id: number;
   name: string;
-  role: UserRole;
-  phone_number: string;
+  type: UserType;
+  image_url: string;
 }

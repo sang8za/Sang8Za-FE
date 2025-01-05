@@ -4,15 +4,21 @@
 import MatchingItem from "@/components/MatchingItem";
 import { useAuth } from "@/hooks/useAuth";
 import { loginData } from "@/mock/loginData";
-import { UserRole } from "@/types/user";
+import { UserType, UserProfile } from "@/types/user";
 import { useRouter } from "next/router";
 
 export default function Home() {
   const { user, login } = useAuth();
   const router = useRouter();
 
-  const handleLogin = (role: UserRole) => {
-    const selectedUser = loginData[role]; // 선택된 역할의 유저 정보 가져오기
+  const handleLogin = async (type: UserType) => {
+    const res = await fetch("http://localhost:3021/user"); // Append a cache-busting query parameter
+    if (!res.ok) {
+      throw new Error("Failed to fetch user data");
+    }
+    const data = await res.json();
+    const selectedUser = data.data.find((x: UserProfile) => x.type === type); // 선택된 역할의 유저 정보 가져오기
+    // 선택된 역할의 유저 정보 가져오기
     login(selectedUser); // Context API에 저장
     router.push("/"); // 로그인 후 프로필 페이지로 이동
   };
@@ -23,7 +29,7 @@ export default function Home() {
         <MatchingItem />
       ) : (
         <div className="max-w-custom-md mx-auto flex justify-center gap-10">
-          <div onClick={() => handleLogin("user")}>
+          <div onClick={() => handleLogin("tenant")}>
             <div className="bg-gray-200 w-48 min-h-64" />
             <h2 className="h2 text-center">Tenant</h2>
           </div>

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/router";
-import { UserRole } from "@/types/user";
+import { UserType } from "@/types/user";
 import { loginData } from "@/mock/loginData";
 
 export default function LoginPage() {
   const { login } = useAuth();
 
-  const [role, setRole] = useState<UserRole>("user");
+  const [role, setRole] = useState<UserType>("tenant");
   const router = useRouter();
 
   const handleLogin = () => {
@@ -23,10 +23,10 @@ export default function LoginPage() {
       {/* 역할 선택 */}
       <select
         value={role}
-        onChange={(e) => setRole(e.target.value as UserRole)}
+        onChange={(e) => setRole(e.target.value as UserType)}
         className="border p-2 mb-2"
       >
-        <option value="user">User</option>
+        <option value="tenant">Tenant</option>
         <option value="landlord">Landlord</option>
       </select>
 

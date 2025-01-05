@@ -13,25 +13,24 @@ import {
 export default function MatchingItem() {
   const { user } = useAuth();
 
-  // ✅ 역할별로 mockupData를 따로 관리
   const propertyData: PropertyDetail[] = useMemo(() => {
-    return user?.role === "user" ? propertyMockup : [];
-  }, [user?.role]);
+    return user?.type === "tenant" ? propertyMockup : [];
+  }, [user?.type]);
 
   const tenantData: TenantDetail[] = useMemo(() => {
-    return user?.role === "landlord" ? tenantMockup : [];
-  }, [user?.role]);
+    return user?.type === "landlord" ? tenantMockup : [];
+  }, [user?.type]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextItem = () => {
     if (
-      (user?.role === "user" && propertyData.length > 0) ||
-      (user?.role === "landlord" && tenantData.length > 0)
+      (user?.type === "tenant" && propertyData.length > 0) ||
+      (user?.type === "landlord" && tenantData.length > 0)
     ) {
       setCurrentIndex((prevIndex) => {
         const length =
-          user?.role === "user" ? propertyData.length : tenantData.length;
+          user?.type === "tenant" ? propertyData.length : tenantData.length;
         return (prevIndex + 1) % length;
       });
       alert("like");
@@ -40,12 +39,12 @@ export default function MatchingItem() {
 
   const prevItem = () => {
     if (
-      (user?.role === "user" && propertyData.length > 0) ||
-      (user?.role === "landlord" && tenantData.length > 0)
+      (user?.type === "tenant" && propertyData.length > 0) ||
+      (user?.type === "landlord" && tenantData.length > 0)
     ) {
       setCurrentIndex((prevIndex) => {
         const length =
-          user?.role === "user" ? propertyData.length : tenantData.length;
+          user?.type === "tenant" ? propertyData.length : tenantData.length;
         return prevIndex === 0 ? length - 1 : prevIndex - 1;
       });
       alert("dislike");
@@ -63,7 +62,7 @@ export default function MatchingItem() {
       </button>
 
       {/* 역할별로 다른 컴포넌트 렌더링 */}
-      {user?.role === "user" ? (
+      {user?.type === "tenant" ? (
         <UserMatchingContent
           currentIndex={currentIndex}
           mockupData={propertyData}

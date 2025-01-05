@@ -1,17 +1,17 @@
-import { UserRole, UserProfile } from "@/types/user";
+import { UserType, UserProfile } from "@/types/user";
 
-export const loginData: Record<UserRole, UserProfile> = {
-  user: {
+export const loginData: Record<UserType, UserProfile> = {
+  tenant: {
     id: 1,
     name: "user",
-    role: "user",
-    phone_number: "00000000000",
+    type: "tenant",
+    image_url: "url1",
   },
   landlord: {
     id: 2,
     name: "god",
-    role: "landlord",
-    phone_number: "99999999999",
+    type: "landlord",
+    image_url: "url2",
   },
 };
 
