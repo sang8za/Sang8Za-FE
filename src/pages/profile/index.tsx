@@ -31,13 +31,6 @@ export default function ProfilePage() {
             label={"name"}
             name={"userName"}
           />
-          {/* <InputField
-            type="text"
-            value={user.phone_number}
-            onChange={(e) => setUser({ ...user, })}
-            label={"phone number"}
-            name={"phoneNumber"}
-          /> */}
         </form>
         {user.type === "tenant" ? (
           <div className="mt-4 p-4 border rounded shadow">

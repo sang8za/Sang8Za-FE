@@ -5,6 +5,7 @@
 :root {
   --primary: #f97316;
   --secondary: #f9b516;
+  --cancel: #929292;
   --accent: #22c55e;
   --background: #ffffff;
   --text: #1f2937; /* 기본 텍스트 색상 */
@@ -43,6 +44,10 @@ body {
 
 .filter__item {
   @apply px-4 py-2 inline-flex rounded-full border cursor-pointer;
+}
+
+.button {
+  @apply rounded-md px-5 py-3 font-semibold cursor-pointer transition-all duration-300 ease-in-out hover:scale-110 active:scale-90;
 }
 
 .header_menu_container {

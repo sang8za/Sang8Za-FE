@@ -3,7 +3,6 @@
 
 import MatchingItem from "@/components/MatchingItem";
 import { useAuth } from "@/hooks/useAuth";
-import { loginData } from "@/mock/loginData";
 import { UserType, UserProfile } from "@/types/user";
 import { useRouter } from "next/router";
 

@@ -6,11 +6,13 @@ import { PropertyDetail } from "@/mock/loginData";
 interface MatchingContentProps {
   currentIndex: number;
   mockupData: PropertyDetail[];
+  extraProps?: React.ReactNode;
 }
 
 export default function UserMatchingContent({
   currentIndex,
   mockupData,
+  extraProps,
 }: MatchingContentProps) {
   return (
     <div className="max-w-custom-sm overflow-hidden">
@@ -18,6 +20,10 @@ export default function UserMatchingContent({
         <section>
           <EmblaCarousel slides={mockupData[currentIndex].photo_url} />
         </section>
+
+        {/* extraButton이 존재하면 렌더링 */}
+        {extraProps && <section className="w-full">{extraProps}</section>}
+
         <section className="flex flex-col flex-wrap section w-full ">
           <div className="flex justify-between py-5">
             <h1 className="h1">{mockupData[currentIndex].title}</h1>

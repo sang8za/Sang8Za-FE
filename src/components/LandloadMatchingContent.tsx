@@ -7,11 +7,13 @@ import { useState } from "react";
 interface MatchingContentProps {
   currentIndex: number;
   mockupData: TenantDetail[];
+  extraProps?: React.ReactNode;
 }
 
 export default function LandloadMatchingContent({
   currentIndex,
   mockupData,
+  extraProps,
 }: MatchingContentProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -21,6 +23,10 @@ export default function LandloadMatchingContent({
         <section>
           <EmblaCarousel slides={mockupData[currentIndex].photo_url} />
         </section>
+
+        {/* extraButton이 존재하면 렌더링 */}
+        {extraProps && <section className="w-full">{extraProps}</section>}
+
         <section className="flex flex-col flex-wrap section w-full ">
           <div className="flex justify-between py-5">
             <h1 className="h1">{mockupData[currentIndex].name}</h1>

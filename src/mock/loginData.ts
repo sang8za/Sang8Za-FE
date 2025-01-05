@@ -25,21 +25,21 @@ export interface PropertyDetail {
 
 export const propertyMockup: PropertyDetail[] = [
   {
-    photo_url: ["next.svg", "file.svg"],
+    photo_url: ["/next.svg", "/file.svg"],
     title: "Home in Vancouver",
     city: "120 Garden dr, Vancouver, BC, Canada",
     preference: ["No Smoking", "Pet Friendly", "Dog OK"],
     price: 1500,
   },
   {
-    photo_url: ["globe.svg", "logo.svg"],
+    photo_url: ["/globe.svg", "/logo.svg"],
     title: "2br - Private room with bathroom",
     city: "Downtown",
     preference: ["No Smoking", "Pet Friendly", "Cat OK", "Dog OK"],
     price: 1000,
   },
   {
-    photo_url: ["window.svg", "next.svg"],
+    photo_url: ["/window.svg", "/next.svg"],
     title: "Furnished Upstair Quite room",
     city: "Port Moody",
     preference: ["No Smoking", "Fish OK", "Dog OK"],
