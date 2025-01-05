@@ -7,7 +7,7 @@ import { loginData } from "@/mock/loginData";
 export default function LoginPage() {
   const { login } = useAuth();
 
-  const [role, setRole] = useState<UserRole>("user");
+  const [role, setRole] = useState<UserRole>("tenant");
   const router = useRouter();
 
   const handleLogin = () => {
@@ -26,7 +26,7 @@ export default function LoginPage() {
         onChange={(e) => setRole(e.target.value as UserRole)}
         className="border p-2 mb-2"
       >
-        <option value="user">User</option>
+        <option value="tenant">Tenant</option>
         <option value="landlord">Landlord</option>
       </select>
 

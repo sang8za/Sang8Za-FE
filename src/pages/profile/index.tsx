@@ -31,15 +31,15 @@ export default function ProfilePage() {
             label={"name"}
             name={"userName"}
           />
-          <InputField
+          {/* <InputField
             type="text"
             value={user.phone_number}
-            onChange={(e) => setUser({ ...user, phone_number: e.target.value })}
+            onChange={(e) => setUser({ ...user, })}
             label={"phone number"}
             name={"phoneNumber"}
-          />
+          /> */}
         </form>
-        {user.role === "user" ? (
+        {user.role === "tenant" ? (
           <div className="mt-4 p-4 border rounded shadow">
             <h3 className="text-lg font-semibold">📄 User 대시보드</h3>
             <p>거주 이력 및 계약 정보를 확인하세요.</p>

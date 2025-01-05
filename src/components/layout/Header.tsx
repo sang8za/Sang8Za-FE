@@ -64,11 +64,13 @@ export default function Header() {
               />
             </Link>
             <Link key={menuItems[1].path} href={menuItems[1].path} passHref>
-              <div
-                className={`w-7 h-7 rounded-full 
-          ${user?.role === "user" ? `bg-orange-300` : `bg-pink-300`} 
-           cursor-pointer`}
-              ></div>
+              <Image
+                className={`w-7 h-7 rounded-full cursor-pointer`}
+                src={user.image_url}
+                alt="user image icon"
+                width={24}
+                height={24}
+              ></Image>
             </Link>
           </div>
         )}
