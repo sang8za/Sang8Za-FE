@@ -16,7 +16,7 @@ export default function LandloadMatchingContent({
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="max-w-custom-sm mx-auto overflow-hidden">
+    <div className="max-w-custom-sm overflow-hidden">
       <div className="flex flex-col items-center w-full">
         <section>
           <EmblaCarousel slides={mockupData[currentIndex].photo_url} />

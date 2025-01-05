@@ -52,14 +52,16 @@ export default function MatchingItem() {
   };
 
   return (
-    <div className="relative flex gap-5 justify-center">
+    <div className="relative flex gap-10 justify-center">
       {/* 왼쪽 화살표 버튼 */}
-      <button
-        onClick={prevItem}
-        className="fixed left-5 top-1/2 transform -translate-y-1/2 p-2"
-      >
-        <Image src="/leftArrow.svg" width={30} height={30} alt="Previous" />
-      </button>
+      <div>
+        <button
+          onClick={prevItem}
+          className="sticky  left-5 top-2/4 transform -translate-y-1/2 p-2"
+        >
+          <Image src="/leftArrow.svg" width={30} height={30} alt="Previous" />
+        </button>
+      </div>
 
       {/* 역할별로 다른 컴포넌트 렌더링 */}
       {user?.type === "tenant" ? (
@@ -75,12 +77,14 @@ export default function MatchingItem() {
       )}
 
       {/* 오른쪽 화살표 버튼 */}
-      <button
-        onClick={nextItem}
-        className="fixed right-5 top-1/2 transform -translate-y-1/2 p-2"
-      >
-        <Image src="/rightArrow.svg" width={30} height={30} alt="Next" />
-      </button>
+      <div>
+        <button
+          onClick={nextItem}
+          className="sticky right-5 top-2/4 transform -translate-y-1/2 p-2"
+        >
+          <Image src="/rightArrow.svg" width={30} height={30} alt="Next" />
+        </button>
+      </div>
     </div>
   );
 }

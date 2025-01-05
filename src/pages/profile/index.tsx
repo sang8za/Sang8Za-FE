@@ -20,7 +20,7 @@ export default function ProfilePage() {
     <UserLayout>
       <div className="flex flex-col">
         <h1 className="text-2xl font-bold">환영합니다, {user.name}님!</h1>
-        <h2 className="text-xl text-gray-600">역할: {user.role}</h2>
+        <h2 className="text-xl text-gray-600">역할: {user.type}</h2>
 
         <form>
           <input type="hidden" value={user.id} />
@@ -39,7 +39,7 @@ export default function ProfilePage() {
             name={"phoneNumber"}
           /> */}
         </form>
-        {user.role === "tenant" ? (
+        {user.type === "tenant" ? (
           <div className="mt-4 p-4 border rounded shadow">
             <h3 className="text-lg font-semibold">📄 User 대시보드</h3>
             <p>거주 이력 및 계약 정보를 확인하세요.</p>
