@@ -44,3 +44,8 @@ body {
 .filter__item {
   @apply px-4 py-2 inline-flex rounded-full border cursor-pointer;
 }
+
+.header_menu_container {
+  @apply px-4 py-2 inline-flex rounded-full border  cursor-pointer;
+  border-color: black;
+}

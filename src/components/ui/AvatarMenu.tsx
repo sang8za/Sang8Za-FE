@@ -17,7 +17,7 @@ export default function AvatarMenu() {
     <div className="relative inline-block" ref={menuRef}>
       {/* 아바타 아이콘 */}
       <div
-        className={`w-10 h-10 rounded-full 
+        className={`w-7 h-7 rounded-full 
           ${user?.role === "user" ? `bg-orange-300` : `bg-pink-300`} 
            cursor-pointer`}
         onMouseEnter={() => setIsOpen(true)}
