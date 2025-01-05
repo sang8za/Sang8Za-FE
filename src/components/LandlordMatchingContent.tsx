@@ -193,11 +193,6 @@ export default function LandlordMatchingContent({
               </label>
             </div>
           </div>
-
-          <div className="flex flex-col w-100 gap-5 mt-5">
-            <div>Property</div>
-            <CheckboxGroup options={options} />
-          </div>
           <div className="flex flex-col w-100 gap-5 mt-5">
             <div>Tendency</div>
             <div className="flex align-center gap-2">
@@ -241,6 +236,10 @@ export default function LandlordMatchingContent({
                 Introverted
               </label>
             </div>
+          </div>
+          <div className="flex flex-col w-100 gap-5 mt-5">
+            <div>Property</div>
+            <CheckboxGroup options={options} />
           </div>
           <div className="flex justify-center gap-3">
             <button
