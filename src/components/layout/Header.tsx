@@ -13,7 +13,7 @@ export default function Header() {
       {/** logo */}
       <div className="text-2xl font-bold">
         <Link href="/">
-          <Image src="/next.svg" alt="logo" width={150} height={50} />
+          <Image src="/logo.svg" alt="logo" width={70} height={28} />
         </Link>
       </div>
 
