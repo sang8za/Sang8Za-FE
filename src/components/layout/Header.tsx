@@ -1,6 +1,7 @@
 import { useAuth } from "@/hooks/useAuth";
 import Image from "next/image";
 import Link from "next/link";
+import AvatarMenu from "../ui/AvatarMenu";
 
 export default function Header() {
   const { user, logout } = useAuth();
@@ -13,23 +14,27 @@ export default function Header() {
       {/** logo */}
       <div className="text-2xl font-bold">
         <Link href="/">
+<<<<<<< HEAD
           <Image src="/logo.svg" alt="logo" width={70} height={28} />
+=======
+          <Image src="/logo.svg" alt="logo" width={93} height={70} />
+>>>>>>> aef8b83f0670fae0b1b9a074d4f5cf1cebfa0765
         </Link>
       </div>
 
       {/** nav */}
       <nav className="flex gap-4 flex-1 justify-end">
         {user ? (
-          <div className="flex gap-4">
-            <Link href="/profile">{user.name}의 프로필</Link>
-            <button onClick={logout} className="bg-secondary px-4 py-2 rounded">
-              Logout
-            </button>
-          </div>
+          <AvatarMenu />
         ) : (
-          <Link href="/login" className="bg-blue-500 px-4 py-2 rounded">
-            Login
-          </Link>
+          <>
+            <Link href="/login" className="text-sm p-2">
+              Login
+            </Link>
+            <Link href="/signup" className="text-sm p-2">
+              Sign Up
+            </Link>
+          </>
         )}
       </nav>
     </header>

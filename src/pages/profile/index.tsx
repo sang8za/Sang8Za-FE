@@ -1,4 +1,4 @@
-import InputField from "@/components/form/InputField";
+import InputField from "@/components/ui/InputField";
 import UserLayout from "@/components/layout/UserLayout";
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/router";

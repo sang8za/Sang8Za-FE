@@ -1,31 +1,17 @@
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/router";
-import { UserProfile, UserRole } from "@/types/user";
+import { UserRole } from "@/types/user";
+import { loginData } from "@/mock/loginData";
 
 export default function LoginPage() {
-  const mockupData: Record<UserRole, UserProfile> = {
-    user: {
-      id: 1,
-      name: "user",
-      role: "user",
-      phone_number: "00000000000",
-    },
-    landlord: {
-      id: 2,
-      name: "god",
-      role: "landlord",
-      phone_number: "99999999999",
-    },
-  };
-
   const { login } = useAuth();
 
   const [role, setRole] = useState<UserRole>("user");
   const router = useRouter();
 
   const handleLogin = () => {
-    const selectedUser = mockupData[role]; // 선택된 역할의 유저 정보 가져오기
+    const selectedUser = loginData[role]; // 선택된 역할의 유저 정보 가져오기
     login(selectedUser); // Context API에 저장
     router.push("/"); // 로그인 후 프로필 페이지로 이동
   };
