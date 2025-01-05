@@ -18,7 +18,7 @@ export default function Header() {
   ];
 
   const menuItems = [
-    { path: "/profile/contracts", label: "History" },
+    { path: "/profile/history", label: "History" },
     { path: "/profile", label: "User Profile" },
     { path: "/profile/reviews", label: "Review List" },
   ];

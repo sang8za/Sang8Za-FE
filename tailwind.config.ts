@@ -11,6 +11,7 @@ export default {
       colors: {
         primary: "var(--primary)",
         secondary: "var(--secondary)",
+        cancel: "var(--cancle)",
         accent: "var(--accent)",
         background: "var(--background)",
         text: "var(--text)",
