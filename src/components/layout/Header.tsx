@@ -70,13 +70,13 @@ export default function Header() {
                 alt="user image icon"
                 width={24}
                 height={24}
-              ></Image>
+              />
             </Link>
           </div>
         )}
       </nav>
 
-      {/** Inline Modal */}
+      {/* Inline Modal */}
       {isMyReviewOpen && (
         <div className="fixed inset-0 flex items-start justify-end z-50 mt-[65px] ml-[7px]">
           <div className="bg-white shadow-lg rounded-lg p-6 max-w-[422px] max-h-[391px] relative left-[-1em]">
