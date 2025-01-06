@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Image from "next/image";
 import { useAuth } from "@/hooks/useAuth";
 import UserMatchingContent from "./UserMatchingContent";
@@ -9,8 +9,11 @@ import {
   TenantDetail,
   tenantMockup,
 } from "@/mock/loginData";
+import { Dialog, DialogContent } from "@/components/ui/Dialog";
 
 export default function MatchingItem() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
   const { user } = useAuth();
 
   const propertyData: PropertyDetail[] = useMemo(() => {
@@ -23,6 +26,23 @@ export default function MatchingItem() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        prevItem();
+      }
+      if (e.key === "ArrowRight") {
+        nextItem();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   const nextItem = () => {
     if (
       (user?.type === "tenant" && propertyData.length > 0) ||
@@ -33,7 +53,8 @@ export default function MatchingItem() {
           user?.type === "tenant" ? propertyData.length : tenantData.length;
         return (prevIndex + 1) % length;
       });
-      alert("like");
+      setModalMessage("Like Sent");
+      setIsModalOpen(true);
     }
   };
 
@@ -47,7 +68,8 @@ export default function MatchingItem() {
           user?.type === "tenant" ? propertyData.length : tenantData.length;
         return prevIndex === 0 ? length - 1 : prevIndex - 1;
       });
-      alert("dislike");
+      setModalMessage("Disliked");
+      setIsModalOpen(true);
     }
   };
 
@@ -57,7 +79,7 @@ export default function MatchingItem() {
       <div>
         <button
           onClick={prevItem}
-          className="sticky  left-5 top-2/4 transform -translate-y-1/2 p-2"
+          className="sticky left-5 top-2/4 transform -translate-y-1/2 p-2"
         >
           <Image src="/leftArrow.svg" width={30} height={30} alt="Previous" />
         </button>
@@ -65,19 +87,15 @@ export default function MatchingItem() {
 
       {/* 역할별로 다른 컴포넌트 렌더링 */}
       {user?.type === "tenant" ? (
-        <>
-          <UserMatchingContent
-            currentIndex={currentIndex}
-            mockupData={propertyData}
-          />
-        </>
+        <UserMatchingContent
+          currentIndex={currentIndex}
+          mockupData={propertyData}
+        />
       ) : (
-        <>
-          <LandlordMatchingContent
-            currentIndex={currentIndex}
-            mockupData={tenantData}
-          />
-        </>
+        <LandlordMatchingContent
+          currentIndex={currentIndex}
+          mockupData={tenantData}
+        />
       )}
 
       {/* 오른쪽 화살표 버튼 */}
@@ -89,6 +107,20 @@ export default function MatchingItem() {
           <Image src="/rightArrow.svg" width={30} height={30} alt="Next" />
         </button>
       </div>
+
+      <Dialog isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <DialogContent>
+          <div className="flex justify-center gap-3 flex-col">
+            <p className="flex justify-center">{modalMessage}</p>
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="text-sm mt-4 px-4 py-2 bg-orange-500 text-white rounded-md w-[50%] self-center"
+            >
+              Confirm
+            </button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
