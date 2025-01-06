@@ -17,7 +17,8 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiEndpoint = process.env.API_ENDPOINT;
+        const apiEndpoint = process.env.NEXT_PUBLIC_API_ENDPOINT;
+        console.log("apiEndpoint", apiEndpoint);
         const res = await fetch(`${apiEndpoint}/user?isLimited=true`);
         if (!res.ok) {
           throw new Error("Failed to fetch user data");
