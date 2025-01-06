@@ -23,7 +23,8 @@ export default function ProfileContracts() {
   const [isLandlordCancelModalOpen, setIsLandlordCancelModalOpen] =
     useState(false);
   const [filledHearts, setFilledHearts] = useState(0);
-  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+  const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
+
   const { user } = useAuth();
 
   const smoothScroll = (amount: number) => {
@@ -430,7 +431,10 @@ export default function ProfileContracts() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => setIsLandlordContractModalOpen(false)}
+                  onClick={() => {
+                    setIsLandlordContractModalOpen(false);
+                    setIsMessageModalOpen(true);
+                  }}
                   className="mt-10 text-sm px-5 py-2.5 me-2 mb-2 bg-orange-500 text-white border border-transparent rounded-lg font-medium focus:outline-none hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 dark:bg-orange-400 dark:text-white dark:hover:bg-orange-500 dark:focus:ring-orange-500"
                 >
                   Post
@@ -462,6 +466,28 @@ export default function ProfileContracts() {
                 type="button"
                 onClick={() => setIsLandlordCancelModalOpen(false)}
                 className="mt-10 text-sm px-5 py-2.5 me-2 mb-2 bg-orange-500 text-white border border-transparent rounded-lg font-medium focus:outline-none hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 dark:bg-orange-400 dark:text-white dark:hover:bg-orange-500 dark:focus:ring-orange-500"
+              >
+                Confirm
+              </button>
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
+
+      {isMessageModalOpen && (
+        <Dialog
+          isOpen={isMessageModalOpen}
+          onClose={() => setIsMessageModalOpen(false)}
+        >
+          <DialogContent>
+            <p className="flex justify-center">You are done!</p>
+            <div className="flex justify-center">
+              <button
+                onClick={() => {
+                  setIsMessageModalOpen(true);
+                  setIsLandlordCancelModalOpen(false);
+                }}
+                className="ml-1 mt-10 text-sm px-5 py-2.5 me-2 mb-2 bg-orange-500 text-white border border-transparent rounded-lg font-medium focus:outline-none hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 dark:bg-orange-400 dark:text-white dark:hover:bg-orange-500 dark:focus:ring-orange-500"
               >
                 Confirm
               </button>
