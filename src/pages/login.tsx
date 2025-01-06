@@ -5,14 +5,17 @@ import { UserType } from "@/types/user";
 import { loginData } from "@/mock/loginData";
 
 export default function LoginPage() {
-  const { login } = useAuth();
-
+  const { user, login } = useAuth();
   const [role, setRole] = useState<UserType>("tenant");
   const router = useRouter();
 
   const handleLogin = () => {
-    const selectedUser = loginData[role]; // 선택된 역할의 유저 정보 가져오기
-    login(selectedUser); // Context API에 저장
+    if (!user) {
+      const selectedUser = loginData[role]; // 선택된 역할의 유저 정보 가져오기
+      login(selectedUser); // Context API에 저장
+    } else {
+      login(user);
+    }
     router.push("/"); // 로그인 후 프로필 페이지로 이동
   };
 

@@ -1,4 +1,6 @@
 import { Heart } from "./ui/Heart";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
 
 export interface ReviewItemProps {
   writer?: string;
@@ -39,6 +41,8 @@ export const reviewMock = [
 ];
 
 export function ReviewItem({ title, writer, body, point }: ReviewItemProps) {
+  const auth = useContext(AuthContext);
+
   return (
     <div className="flex flex-col gap-3">
       <div className="flex justify-between">

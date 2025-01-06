@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   Dialog,
   DialogTrigger,
   DialogContent,
   DialogHeader,
 } from "@/components/ui/Dialog";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const auth = useContext(AuthContext);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">

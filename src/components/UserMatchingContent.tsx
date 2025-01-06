@@ -2,14 +2,14 @@ import { Separator } from "./ui/separator";
 import EmblaCarousel from "./carousel/EmblaCarousel";
 import { ReviewItem, reviewMock } from "./ReviewItem";
 import { PropertyDetail } from "@/mock/loginData";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   Filter,
   FilterTrigger,
   FilterContent,
-  FilterHeader,
 } from "@/components/ui/FilterModal";
 import CheckboxGroup from "./ui/CheckboxGroup";
+import { AuthContext } from "@/context/AuthContext";
 
 interface MatchingContentProps {
   currentIndex: number;
@@ -23,6 +23,7 @@ export default function UserMatchingContent({
   extraProps,
 }: MatchingContentProps) {
   const [isEditFilter, setIsEditFilter] = useState(false);
+  const auth = useContext(AuthContext);
   const options = [
     { value: "private", label: "Private" },
     { value: "petsOkay", label: "Pets Okay" },

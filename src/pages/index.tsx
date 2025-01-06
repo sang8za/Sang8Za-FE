@@ -30,11 +30,9 @@ export default function Home() {
 
         if (tenant) {
           setIsTenantValue(tenant);
-          // login(tenant);
         }
         if (landlord) {
           setIsLandlordValue(landlord);
-          // login(landlord);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -45,26 +43,15 @@ export default function Home() {
   }, []);
 
   const handleLogin = async (type: UserType) => {
-    let selectedUser = isTenantValue ? isTenantValue : isLandlordValue; // 선택된 역할의 유저 정보 가져오기
-    if (user == null && type === "landlord") {
-      selectedUser = {
-        id: 0,
-        name: "Landlord",
-        type: "landlord",
-        image_url:
-          "https://media.gettyimages.com/id/609883286/es/foto/west-hollywood-ca-kimberly-robinson-attends-chanel-dinner-celebrating-n-5-leau-at-the-sunset.jpg?s=612x612&w=gi&k=20&c=X_gmo08nPX7hcyvmV0bNWEK0BLykcOxLvd6jdZp9t7I=",
-      };
-    } else {
-      selectedUser = {
-        id: 0,
-        name: "Tenant",
-        type: "tenant",
-        image_url:
-          "https://live.staticflickr.com/3181/2579354912_ff453014f4.jpg",
-      };
+    let selectedUser; // 선택된 역할의 유저 정보 가져오기
+
+    if (type === "tenant") {
+      selectedUser = isTenantValue;
+    }
+    if (type === "landlord") {
+      selectedUser = isLandlordValue;
     }
 
-    console.log(selectedUser);
     if (!selectedUser) {
       console.error("User not found for the selected role.");
       return;

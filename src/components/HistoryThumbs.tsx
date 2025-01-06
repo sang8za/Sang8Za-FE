@@ -1,4 +1,6 @@
 import { Heart } from "./ui/Heart";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
 
 export interface HistoryThumbsProps {
   label: string;
@@ -11,6 +13,7 @@ export default function HistoryThumbsItem({
   point,
   review,
 }: HistoryThumbsProps) {
+  const auth = useContext(AuthContext);
   return (
     <div className="p-3">
       <div className="w-16 h-16 relative">

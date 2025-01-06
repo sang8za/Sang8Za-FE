@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import { useAuth } from "@/hooks/useAuth";
 import UserMatchingContent from "./UserMatchingContent";
@@ -10,11 +10,13 @@ import {
   tenantMockup,
 } from "@/mock/loginData";
 import { Dialog, DialogContent } from "@/components/ui/Dialog";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function MatchingItem() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const { user } = useAuth();
+  const auth = useContext(AuthContext);
 
   const propertyData: PropertyDetail[] = useMemo(() => {
     return user?.type === "tenant" ? propertyMockup : [];

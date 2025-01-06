@@ -1,11 +1,13 @@
 import { useAuth } from "@/hooks/useAuth";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Separator } from "../ui/separator";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function Header() {
   const { user, logout } = useAuth();
+  const auth = useContext(AuthContext);
   const [isMyReviewOpen, setIsMyReviewOpen] = useState(false);
   const mockupUserReviewData = [
     {

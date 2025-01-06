@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useContext } from "react";
 import { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import { Thumb } from "./EmblaCarouselThumbsButton";
 import Image from "next/image";
+import { AuthContext } from "@/context/AuthContext";
 
 type PropType = {
   slides: string[];
@@ -11,6 +12,7 @@ type PropType = {
 
 const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const auth = useContext(AuthContext);
   const [emblaMainRef, emblaMainApi] = useEmblaCarousel(options);
   const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
     containScroll: "keepSnaps",

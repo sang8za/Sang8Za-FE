@@ -2,14 +2,14 @@ import { Separator } from "./ui/separator";
 import EmblaCarousel from "./carousel/EmblaCarousel";
 import { ReviewItem, reviewMock } from "./ReviewItem";
 import { TenantDetail } from "@/mock/loginData";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   Filter,
   FilterTrigger,
   FilterContent,
-  FilterHeader,
 } from "@/components/ui/FilterModal";
 import CheckboxGroup from "./ui/CheckboxGroup";
+import { AuthContext } from "@/context/AuthContext";
 
 interface MatchingContentProps {
   currentIndex: number;
@@ -24,6 +24,7 @@ export default function LandlordMatchingContent({
 }: MatchingContentProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isEditFilter, setIsEditFilter] = useState(false);
+  const auth = useContext(AuthContext);
 
   const options = [
     { value: "private", label: "Private" },

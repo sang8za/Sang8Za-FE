@@ -1,6 +1,8 @@
 "use client";
 
 import { ReactNode } from "react";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
 
 interface DialogProps {
   isOpen: boolean;
@@ -9,6 +11,7 @@ interface DialogProps {
 }
 
 export function Dialog({ isOpen, onClose, children }: DialogProps) {
+  const auth = useContext(AuthContext);
   if (!isOpen) return null;
 
   return (

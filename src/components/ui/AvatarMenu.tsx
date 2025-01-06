@@ -1,11 +1,13 @@
 import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function AvatarMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const { user } = useAuth();
+  const auth = useContext(AuthContext);
 
   const menuItems = [
     { path: "/profile", label: "User Profile" },

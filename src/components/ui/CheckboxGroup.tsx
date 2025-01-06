@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
 
 interface CheckboxOption {
   value: string;
@@ -10,6 +11,7 @@ interface CheckboxGroupProps {
 }
 
 const CheckboxGroup: React.FC<CheckboxGroupProps> = ({ options }) => {
+  const auth = useContext(AuthContext);
   const [selectedOptions, setSelectedOptions] = useState<
     Record<string, boolean>
   >(

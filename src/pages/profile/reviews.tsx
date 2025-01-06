@@ -1,4 +1,6 @@
 import UserLayout from "@/components/layout/UserLayout";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
 
 interface reviewData {
   id: number;
@@ -8,6 +10,7 @@ interface reviewData {
 }
 
 export default function ProfileReviews() {
+  const auth = useContext(AuthContext);
   const reviewDummy: reviewData[] = [
     {
       id: 1,

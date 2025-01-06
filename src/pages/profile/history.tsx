@@ -10,8 +10,9 @@ import {
   tenantMockup,
 } from "@/mock/loginData";
 import Image from "next/image";
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState, useContext } from "react";
 import { Dialog, DialogContent, DialogHeader } from "@/components/ui/Dialog";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function ProfileContracts() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -24,8 +25,8 @@ export default function ProfileContracts() {
     useState(false);
   const [filledHearts, setFilledHearts] = useState(0);
   const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
-
   const { user } = useAuth();
+  const auth = useContext(AuthContext);
 
   const smoothScroll = (amount: number) => {
     if (scrollContainerRef.current) {

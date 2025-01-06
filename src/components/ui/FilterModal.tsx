@@ -1,6 +1,8 @@
 "use client";
 
 import { ReactNode } from "react";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
 
 interface FilterProps {
   isOpen: boolean;
@@ -9,6 +11,7 @@ interface FilterProps {
 }
 
 export function Filter({ isOpen, onClose, children }: FilterProps) {
+  const auth = useContext(AuthContext);
   if (!isOpen) return null;
 
   return (

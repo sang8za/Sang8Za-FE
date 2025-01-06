@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function ProfilePage() {
-  const { user, setUser, logout } = useAuth();
+  const { user, logout } = useAuth();
   const router = useRouter();
 
   const [isGender, setIsGender] = useState("");
